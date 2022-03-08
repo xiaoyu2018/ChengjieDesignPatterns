@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 
 //本章讲了学习设计模式之前所需的基础面向对象知识
-//各类编程实体配合得当，编程体验酣畅淋漓！
 namespace _0面向对象基础
 {
     class Program
@@ -10,12 +9,13 @@ namespace _0面向对象基础
         static void Main(string[] args)
         {
             Three();
+            
         }
 
         static void One()
         {
-            Aniamal cat = new Cat("咪咪");
-            Aniamal dog = new Dog("旺财");
+            Aniamal cat = new Cat("凯特");
+            Aniamal dog = new Dog("道格");
             Aniamal pig = new Pig("佩奇");
 
             cat.Shout();
@@ -46,13 +46,13 @@ namespace _0面向对象基础
             Cat cat2 = new Cat("Tony");
 
             Mouse mouse1 = new Mouse("Jerry");
-            Mouse mouse2 = new Mouse("Jenny");
+            Mouse mouse2 = new Mouse("Jacky");
 
-            cat1.CatRush += mouse1.Action;
-            cat1.CatRush += mouse2.Action;
+            cat1.CatRush += mouse1.Reaction;
+            cat1.CatRush += mouse2.Reaction;
 
-            cat2.CatRush += mouse1.Action;
-            cat2.CatRush += mouse2.Action;
+            cat2.CatRush += mouse1.Reaction;
+            cat2.CatRush += mouse2.Reaction;
 
             Console.WriteLine("按下回车，观看老猫和鼠！");
             Console.Read();
@@ -61,18 +61,20 @@ namespace _0面向对象基础
         }
     }
 
+    //变化能力的接口，实现该接口可看作拥有该能力
     interface IChange
     {
         void Change(string item);
+
+        
     }
 
 
     abstract class Aniamal
     {
-        public string Name;
-        private int _num = 3;
-
+        public string Name { get; set; }
         
+        private int _num = 3;
 
         public int ShoutNum { get { return _num; } 
             set
@@ -94,12 +96,15 @@ namespace _0面向对象基础
             Name = "无名";
         }
 
+        //父类中声明抽象函数并使用，在子类中写出具体实现
+        //动物类为抽象类，不可被实例化
+        //此方法只暴露给子类
         protected abstract string GetShout();
 
         public void Shout()
         {
             string result = "";
-            result += "我是 " + Name+" ";
+            result += $"我是 {Name} ";
             for (int i = 0; i < _num; i++)
             {
                 result += GetShout()+" ";
@@ -108,11 +113,13 @@ namespace _0面向对象基础
             Console.WriteLine(result);
         }
     }
-
+    
+    delegate void AniamalAction(Aniamal sender);
     class Cat : Aniamal
     {
-
-        public event EventHandler CatRush;
+        public event AniamalAction CatRush;
+        //下为通用的事件声明
+        //public event EventHandler CatRush;
 
         public void LetsGo()
         {
@@ -123,11 +130,11 @@ namespace _0面向对象基础
         {
             if (CatRush == null)
                 return;
-            Console.WriteLine($"老{Name}冲锋!");
-            CatRush.Invoke(this,new EventArgs());
+            Console.WriteLine($"{Name}冲锋!");
+            CatRush.Invoke(this);
         }
 
-        public Cat() : base() { }
+        public Cat() { }
 
 
         public Cat(string name) : base(name) { }
@@ -141,7 +148,7 @@ namespace _0面向对象基础
 
     class Mouse : Aniamal
     {
-        public Mouse() : base() { }
+        public Mouse() { }
 
         public Mouse(string name) : base(name) { }
 
@@ -151,7 +158,7 @@ namespace _0面向对象基础
             return "吱";
         }
 
-        internal void Action(object sender, EventArgs e)
+        public void Reaction(object sender)
         {
             if((sender as Cat).Name=="Tom")
                 Console.WriteLine($"是老汤姆！我{Name}要溜溜球辣！");
@@ -162,12 +169,13 @@ namespace _0面向对象基础
 
     class Dog : Aniamal
     {
-        public Dog() : base() { }
+        //自动调用动物类中无参构造函数
+        public Dog() { }
 
 
         public Dog(string name) : base(name) { }
 
-
+        //实现动物类抽象方法
         protected override string GetShout()
         {
             return "汪";
@@ -195,15 +203,17 @@ namespace _0面向对象基础
         }
         public void Change(string item)
         {
-            Console.WriteLine($"我有万能口袋，变出{item}");
+            Console.WriteLine($"我是{Name}，我有万能口袋，变出{item}");
         }
     }
 
     class BaJie : Pig, IChange
     {
+        public BaJie():base("八戒") {}
+       
         public void Change(string item)
         {
-            Console.WriteLine($"我有36变，变出{item}");
+            Console.WriteLine($"我是{Name}，我有36变，变出{item}");
         }
     }
 
