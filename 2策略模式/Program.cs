@@ -1,12 +1,11 @@
 ﻿using System;
 
 //输入单价和数量计算价格
-//记录总价，选择重置总结归零
-//价格计算有不同策略
-//策略模式不同于简单工厂模式
+//记录总价，重置则总价归零,价格计算有不同策略
+//策略模式不同于简单工厂模式，就是让简单工厂不直接返回算法对象，算完把数据传回去
 //策略模式将各类算法完全封装在内部，使用Context类作为数据的交换窗口。界面逻辑只接收和发送数据，不需出现任何算法（包括简单工厂模式抽象算法）
-//在COntxt类中使用简单工厂模式，可以进一步使界面从分支逻辑中解放，switch或if分支被封装在Context类中
-//其实就是让简单工厂不直接返回算法对象，算完把数据传回去
+//在Context类中使用简单工厂模式，可以进一步使界面从分支逻辑中解放，switch或if分支被封装在Context类中
+
 namespace _2策略模式
 {
     class Program
@@ -21,7 +20,7 @@ namespace _2策略模式
                 Console.WriteLine("2 八折");
                 Console.WriteLine("3 五折");
                 Console.WriteLine("4 满100减20");
-                Console.WriteLine("5 满500减120");
+                Console.WriteLine("5 满1000减200");
 
                 int mode;
                 StrategyContext context;
@@ -84,7 +83,7 @@ namespace _2策略模式
                 case 2: _strategy = new Discount(0.8);break;
                 case 3:_strategy = new Discount(0.5);break;
                 case 4:_strategy = new ReturnMoney(100, 20);break;
-                case 5: _strategy = new ReturnMoney(500, 120); break;
+                case 5: _strategy = new ReturnMoney(1000, 200); break;
 
                 default:
                     _strategy = null;
