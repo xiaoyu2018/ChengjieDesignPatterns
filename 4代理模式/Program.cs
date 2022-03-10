@@ -70,7 +70,9 @@ namespace _4代理模式
 
     class Proxy : IGiveAway
     {
+
         Persuit Persuit;
+        //将下面这些逻辑封装在代理中
         public Proxy(SchoolGirl schoolGirl)
         {
             Persuit = new Persuit(schoolGirl);
