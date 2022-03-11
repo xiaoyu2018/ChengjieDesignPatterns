@@ -1,7 +1,7 @@
 ﻿using System;
 
 //原型模式就是从一个对象创建另一个可定制的对象，而不需要知道任何创建细节
-//克隆很常用，在.NET中定义好了ICLONE接口，对原型类只需继承克隆接口，在实现具体克隆方法即可
+//克隆很常用，在.NET中定义好了ICloneable接口，对原型类只需继承克隆接口，在实现具体克隆方法即可
 
 //小菜准备求职简历，同一份简历要复制很多份。
 namespace _6原型模式
@@ -11,6 +11,7 @@ namespace _6原型模式
         static void Main(string[] args)
         {
             Two();
+            
         }
 
         //浅复制
@@ -24,7 +25,8 @@ namespace _6原型模式
             r1.SetName("大鸟");
             r1.SetSex("男");
             ResumeForLight r2 = (ResumeForLight)r1.Clone();
-
+            //var r2 = r1.JustCLone();
+            
             r2.SetName("大狗");
 
             r1.Dispaly();
@@ -43,23 +45,32 @@ namespace _6原型模式
             ResumeForHeavy r2 = r1.Copy();
 
             r2.SetWork("2019-2020", "HuaWei");
-
+            r2.SetName("大狗");
             r1.Dispaly();
             r2.Dispaly();
         }
     }
 
     //浅复制
-    class ResumeForLight : ICloneable
+    class ResumeForLight :ICloneable
     {
         private string _name;
         private string _sex;
         private int _age;
 
+        //实际上不需要继承ICloneable也可以直接进行浅复制
+        public ResumeForLight JustCLone()
+        {
+            return this.MemberwiseClone() as ResumeForLight;
+        }
 
+
+        //实现ICloneable接口声明的这个方法
         public object Clone()
         {
-            return (object)this.MemberwiseClone();
+            //MemberwiseClone方法为protected
+            //从Object类继承而来，与ICloneable接口无关
+            return this.MemberwiseClone();
         }
 
         public void SetName(string name)
@@ -84,6 +95,7 @@ namespace _6原型模式
     }
 
     //深复制
+    //就是多个嵌套的浅复制
     class WorkExperiences:ICloneable
     {
         public string WorkDate { get; set; }
@@ -95,6 +107,7 @@ namespace _6原型模式
             return MemberwiseClone();
         }
     }
+
     class ResumeForHeavy
     {
         private WorkExperiences _workExperiences=new WorkExperiences();
@@ -105,7 +118,7 @@ namespace _6原型模式
         //深复制习惯起名为Copy
         public ResumeForHeavy Copy()
         {
-            //也可以考虑手动复制，即创建一个新的对象，然后将字段一个一个赋值
+            //也可以考虑不用浅复制而是手动复制，即再创建一个新对象，然后将字段一个一个赋值
             WorkExperiences w = (WorkExperiences)_workExperiences.Clone();
 
             ResumeForHeavy o =(ResumeForHeavy) this.MemberwiseClone();

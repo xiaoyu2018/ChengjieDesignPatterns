@@ -12,22 +12,24 @@ namespace _5工厂模式
     {
         static void Main(string[] args)
         {
-            //想换成街溜子或志愿者，只需改这一个地方
-            IFactory factory = new UndergraduateFactory();
+            //想更换同一工厂生产出的对象，只需改这一个地方
+            IFactory undergraduateFactory = new UndergraduateFactory();
+            IFactory volunteerFactory=new VolunteerFactory();
 
-            LeiFeng stu1 = factory.CreateLeiFeng();
-            LeiFeng stu2 = factory.CreateLeiFeng();
-            LeiFeng stu3 = factory.CreateLeiFeng();
+            LeiFeng stu1 = undergraduateFactory.CreateLeiFeng();
+            LeiFeng stu2 = undergraduateFactory.CreateLeiFeng();
+            LeiFeng vlt1 = volunteerFactory.CreateLeiFeng();
+            LeiFeng vlt2 = volunteerFactory.CreateLeiFeng();
 
             stu1.Cook();
             stu2.Sweep();
-            stu3.Wash();
+            vlt1.Wash();
         }
     }
 
 
-   
-    
+
+
     abstract class LeiFeng
     {
         protected string Id = "";
@@ -62,7 +64,7 @@ namespace _5工厂模式
         {
             Id = "大学生";
         }
-        
+
     }
 
     class Volunteer : LeiFeng
@@ -110,3 +112,4 @@ namespace _5工厂模式
         }
     }
 }
+
