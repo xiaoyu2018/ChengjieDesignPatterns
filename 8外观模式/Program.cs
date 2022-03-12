@@ -5,6 +5,8 @@
 
 //小白买股票不如买基金，基金经理去面对复杂的股票子系统，小白只需要去使用基金经理提供的高层接口
 
+//外观模式提供了一个再次封装的接口，对基本的方法再次组合、修改
+//工厂模式和策略模式直接返回，不会组合、修改
 namespace _8外观模式
 {
     class Program
@@ -26,6 +28,7 @@ namespace _8外观模式
         public abstract void Sell();
 
     }
+
     class Stock: Base
     {
 

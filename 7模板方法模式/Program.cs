@@ -15,7 +15,7 @@ namespace _7模板方法模式
             for (int i = 0; i < 10; i++)
             {
                 Console.WriteLine($"============================试卷{i}============================");
-                testPapers[i] = new AnsweredPaper("00" + i.ToString(), "A", "B");
+                testPapers[i] = new AnsweredPaper(i.ToString(), "A", "B");
                 testPapers[i].ShowPaper();
             }
 
@@ -54,7 +54,7 @@ namespace _7模板方法模式
             return $"学生ID：{ID}\n作答如下：\n";
         }
 
-        
+        //提供抽象的模板，具体实现会有差异，在子类完成
         protected abstract string Answer1();
         protected abstract string Answer2();
         
