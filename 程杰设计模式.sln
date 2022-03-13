@@ -21,8 +21,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07模板方法模式", "7�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08外观模式", "8外观模式\08外观模式.csproj", "{D8EAA477-6D41-417E-B598-4D3E7B4AF829}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09建造者模式", "9建造者模式\09建造者模式.csproj", "{687585F9-B660-4998-881D-8B2BD58FE6FF}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10观察者模式", "10观察者模式\10观察者模式.csproj", "{8DEEB9CA-3946-4FBE-B582-409D6547C945}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "11抽象工厂模式", "11抽象工厂模式\11抽象工厂模式.csproj", "{6F8CED8D-36F8-4E54-B224-BE52C770538B}"
@@ -52,6 +50,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "23解释器模式", "23解释器模式\23解释器模式.csproj", "{75029627-5A41-4CA4-8C99-BE882A6844AF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "24访问者模式", "24访问者模式\24访问者模式.csproj", "{A364FC37-8126-454E-85CC-5B422CB5635C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09建造者模式", "09建造者模式\09建造者模式.csproj", "{31BDCC17-243C-413B-940A-C26E6CC3044A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -95,10 +95,6 @@ Global
 		{D8EAA477-6D41-417E-B598-4D3E7B4AF829}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8EAA477-6D41-417E-B598-4D3E7B4AF829}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8EAA477-6D41-417E-B598-4D3E7B4AF829}.Release|Any CPU.Build.0 = Release|Any CPU
-		{687585F9-B660-4998-881D-8B2BD58FE6FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{687585F9-B660-4998-881D-8B2BD58FE6FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{687585F9-B660-4998-881D-8B2BD58FE6FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{687585F9-B660-4998-881D-8B2BD58FE6FF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8DEEB9CA-3946-4FBE-B582-409D6547C945}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8DEEB9CA-3946-4FBE-B582-409D6547C945}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DEEB9CA-3946-4FBE-B582-409D6547C945}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -159,6 +155,10 @@ Global
 		{A364FC37-8126-454E-85CC-5B422CB5635C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A364FC37-8126-454E-85CC-5B422CB5635C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A364FC37-8126-454E-85CC-5B422CB5635C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31BDCC17-243C-413B-940A-C26E6CC3044A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31BDCC17-243C-413B-940A-C26E6CC3044A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31BDCC17-243C-413B-940A-C26E6CC3044A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31BDCC17-243C-413B-940A-C26E6CC3044A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

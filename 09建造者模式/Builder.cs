@@ -1,23 +1,12 @@
-﻿using System;
-using System.Drawing;
+﻿
 
-//将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示
-//定义好一个建造规范，可以源源不断地补充具体建造细节
-
-//创建一个小人，这个小人肯定有一个脑袋一个身体两手两脚，但其胖瘦可能不同
-
-namespace _9建造者模式
+namespace _09建造者模式
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            //凑活看吧
-            BuildDirector b1 = new BuildDirector(new ThinPersonBuilder(new Graphics(), new Pen(Color.Yellow)));
-            BuildDirector b2 = new BuildDirector(new ThinPersonBuilder(new Graphics(), new Pen(Color.Yellow)));
+    //将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示
+    //定义好一个建造规范，可以源源不断地补充具体建造细节
 
-        }
-    }
+    //创建一个小人，这个小人肯定有一个脑袋一个身体两手两脚，但其胖瘦可能不同
+
 
     //抽象建造类
     abstract class PersonBUilder
@@ -25,10 +14,11 @@ namespace _9建造者模式
         protected Graphics graphics;
         protected Pen pen;
 
-        public PersonBUilder(Graphics graphics, Pen pen)
+        public PersonBUilder(Graphics graphics,Pen pen)
         {
             this.pen = pen;
             this.graphics = graphics;
+
         }
 
         public abstract void BuildHead();
@@ -138,5 +128,4 @@ namespace _9建造者模式
             _personBUilder.BuildArmRight();
         }
     }
-    
 }

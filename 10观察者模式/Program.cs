@@ -12,22 +12,23 @@ namespace _10观察者模式
     {
         static void Main(string[] args)
         {
-            Two();
+            One();
         }
         //经典观察者模式
         static void One()
         {
             Boss huhansan = new Boss();
-            NBAObserver laozhang = new NBAObserver("张伟",huhansan);
-            StockObserver laozhao = new StockObserver("赵华琼", huhansan);
+            NBAObserver laoma = new NBAObserver("马壮阳",huhansan);
+            StockObserver laozhao = new StockObserver("赵琼丸", huhansan);
 
             huhansan.Attach(laozhao);
-            huhansan.Attach(laozhang);
+            huhansan.Attach(laoma);
 
             huhansan.Action = "我胡汉三回来了";
             huhansan.Notify();
 
         }
+
         //事件实现观察者模式
         static void Two()
         {
@@ -71,6 +72,7 @@ namespace _10观察者模式
 
         public void Notify()
         {
+            Console.WriteLine($"{Action}");
             foreach (var i in observers)
             {
                 i.Upadate();
@@ -95,10 +97,18 @@ namespace _10观察者模式
 
         public void Upadate()
         {
-            if(_subject==null)
-                Console.WriteLine($"{_state}被抓到了");
+            if(_subject is Boss)
+            {
+                if (_subject.Action.Equals("我胡汉三回来了"))
+                    Console.WriteLine($"我{_name}结束{_state}");
+                else
+                    Console.WriteLine($"{_state}被抓到了");
+            }
+
             else
-                Console.WriteLine($"{_subject.Action} 我{_name}结束{_state}");
+            {
+                Console.WriteLine($"继续{_state}");
+            }
         }
     }
 
