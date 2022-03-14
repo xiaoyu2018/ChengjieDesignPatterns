@@ -12,7 +12,7 @@ namespace _12状态模式
         static void Main(string[] args)
         {
             //有时间跨度也能到达正确的状态！
-            WOrk work = new WOrk(new ForeNoonState());
+            Work work = new Work(new ForeNoonState());
             work.Time = 9;
             work.Handle();
             work.Time = 12;
@@ -29,12 +29,12 @@ namespace _12状态模式
 
     interface IState
     {
-        void WriteProgram(WOrk w);
+        void WriteProgram(Work w);
     }
 
     class ForeNoonState : IState
     {
-        public void WriteProgram(WOrk w)
+        public void WriteProgram(Work w)
         {
             if(w.Time<12)
                 Console.WriteLine($"当前时间：{w.Time}:00 上午工作，精神百倍！");
@@ -49,7 +49,7 @@ namespace _12状态模式
 
     class NoonState : IState
     {
-        public void WriteProgram(WOrk w)
+        public void WriteProgram(Work w)
         {
             if (w.Time < 13)
                 Console.WriteLine($"当前时间：{w.Time}:00 饿了，吃饭！");
@@ -64,7 +64,7 @@ namespace _12状态模式
 
     class AfternoonState : IState
     {
-        public void WriteProgram(WOrk w)
+        public void WriteProgram(Work w)
         {
             if (w.Time < 17)
                 Console.WriteLine($"当前时间：{w.Time}:00 下午状态不错，继续努力！");
@@ -79,7 +79,7 @@ namespace _12状态模式
 
     class NightState : IState
     {
-        public void WriteProgram(WOrk w)
+        public void WriteProgram(Work w)
         {
             if (w.WorkFinished==true)
             {
@@ -104,7 +104,7 @@ namespace _12状态模式
 
     class RestState : IState
     {
-        public void WriteProgram(WOrk w)
+        public void WriteProgram(Work w)
         {
             Console.WriteLine($"{w.Time}:00 下班回家！");
         }
@@ -112,20 +112,20 @@ namespace _12状态模式
 
     class SleepState : IState
     {
-        public void WriteProgram(WOrk w)
+        public void WriteProgram(Work w)
         {
             Console.WriteLine($"不行了，睡着了。。。");
 
         }
     }
-    class WOrk
+    class Work
     {
         public bool WorkFinished { get; set; }
         public int Time { get; set; }
 
         public IState state { get; set; }
 
-        public WOrk(IState state)
+        public Work(IState state)
         {
             this.state = state;
             WorkFinished = false;
