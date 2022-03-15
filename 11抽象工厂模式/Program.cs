@@ -70,6 +70,7 @@ namespace _11抽象工厂模式
         public string DepName { get; set; }
 
     }
+
     //数据库表操作
     interface IDepartment
     {
@@ -189,6 +190,7 @@ namespace _11抽象工厂模式
         public static IUser CreateUser()
         {
             className = "_" + AssemlyName + "." + db+"User";
+            //使用元数据创建实例
             return (IUser)Assembly.Load(AssemlyName).CreateInstance(className);
         }
 

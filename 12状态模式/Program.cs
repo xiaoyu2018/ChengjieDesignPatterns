@@ -36,7 +36,7 @@ namespace _12状态模式
     {
         public void WriteProgram(Work w)
         {
-            if(w.Time<12)
+            if (w.Time < 12)
                 Console.WriteLine($"当前时间：{w.Time}:00 上午工作，精神百倍！");
             else
             {
@@ -81,7 +81,7 @@ namespace _12状态模式
     {
         public void WriteProgram(Work w)
         {
-            if (w.WorkFinished==true)
+            if (w.WorkFinished == true)
             {
                 w.state = new RestState();
                 w.Handle();
@@ -137,3 +137,5 @@ namespace _12状态模式
         }
     }
 }
+
+
