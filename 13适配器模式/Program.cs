@@ -12,14 +12,14 @@ namespace _13适配器模式
     {
         static void Main(string[] args)
         {
-            NBAPlayer b = new Forward("巴蒂尔");
+            NBAPlayer battier = new Forward("巴蒂尔");
 
-            NBAPlayer m = new Guard("麦克格雷迪");
+            NBAPlayer mcgrady = new Guard("麦克格雷迪");
 
             NBAPlayer yaoming = new Adaptor(new CBACenter("姚明"));
 
-            b.Attack();
-            m.Attack();
+            battier.Attack();
+            mcgrady.Attack();
             yaoming.Defend();
         }
     }

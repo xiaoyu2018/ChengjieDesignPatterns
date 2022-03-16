@@ -86,6 +86,7 @@ namespace _14备忘录模式
     }
 
     //管理者
+    //管理多个存档
     class RoleStateCareTaker
     {
         private List<RoleStateMemento> _mementos=new List<RoleStateMemento>();
