@@ -28,6 +28,7 @@ namespace _16迭代器模式
             }
 
             //使用foreach，编译器自动产生了IEnumerator迭代器将聚类迭代
+            //也即所有实现了IEnumerable的对象都可以使用foreach取出每一个元素
             foreach (string i in list)
             {
                 Console.WriteLine(i);
