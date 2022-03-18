@@ -52,7 +52,7 @@ namespace _17单例模式
         }
     }
 
-
+    //更加常用的方法
     //直接在类加载时就实例化单例，单例必然只有一个
     sealed class Singleton2
     {
