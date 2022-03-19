@@ -58,11 +58,14 @@ namespace _20职责链模式
         public override void Handle(Request request)
         {
             if(request.RequestType=="请假"&&request.Number<=2)
+            {
                 Console.WriteLine($"请假{request.Number}天，我小组长就能给你批了！");
+                Console.WriteLine("=========================================================");
+            }
+
             else
             {
-                Console.WriteLine("你这个要求，俺这个小组长权限不够啊！帮你问问大总监");
-                Console.WriteLine("=========================================================");
+                Console.WriteLine("你这个要求，俺这个小组长权限不够啊！帮你问问带总监");
                 if (successor != null)
                     successor.Handle(request);
             }
@@ -74,11 +77,13 @@ namespace _20职责链模式
         public override void Handle(Request request)
         {
             if (request.RequestType == "请假" && request.Number <= 5)
-                Console.WriteLine($"请假{request.Number}天，我大总监就能给你批了！");
+            {
+                Console.WriteLine($"请假{request.Number}天，我带总监就能给你批了！");
+                Console.WriteLine("=========================================================");
+            }
             else
             {
-                Console.WriteLine("你这个要求，俺这个大总监权限不够啊！帮你问问总经理");
-                Console.WriteLine("=========================================================");
+                Console.WriteLine("你这个要求，俺这个带总监权限不够啊！帮你问问总经理");
                 if (successor != null)
                     successor.Handle(request);
             }
@@ -104,6 +109,8 @@ namespace _20职责链模式
                 else
                     Console.WriteLine($"想钱想疯了？一个月涨{request.Number}？不如你来剥削我吧！");
             }
+            Console.WriteLine("=========================================================");
+
         }
     }
 }
