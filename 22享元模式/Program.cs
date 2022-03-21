@@ -31,8 +31,18 @@ namespace _22享元模式
             w2.Use(user1);
             w6.Use(user2);
 
+            //两个变量保存的引用是否相同
             Console.WriteLine(object.ReferenceEquals(w2,w6));
-            
+            //两个变量保存的引用指向的值是否相等
+            Console.WriteLine(object.Equals(w2,w6));
+
+            string a1 = new string("asd");
+            string a2 = "asd";
+
+            Console.WriteLine(object.Equals(a1,a2)); //True
+            Console.WriteLine(object.ReferenceEquals(a1, a2)); //False
+
+
         }
     }
 
@@ -68,12 +78,15 @@ namespace _22享元模式
     class Factory
     {
         private Hashtable websits = new Hashtable();
+        
 
+        //相同的网站名对应相同对象
         public Website GetWeb(string webName)
         {
             if (websits[webName] == null)
                 websits.Add(webName, new ConcreateWebsite(webName));
 
+            //强制转换到父类
             return (Website)websits[webName];
         }
 

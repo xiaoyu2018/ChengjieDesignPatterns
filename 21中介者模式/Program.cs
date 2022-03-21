@@ -12,14 +12,14 @@ namespace _21中介者模式
     {
         static void Main(string[] args)
         {
-            UN uN = new UN();
-            Iraq iraq = new Iraq(uN);
-            USA uSA = new USA(uN);
+            UN un = new UN();
+            Iraq iraq = new Iraq(un);
+            USA usa= new USA(un);
 
-            uN.USA = uSA;
-            uN.Iraq = iraq;
+            un.USA = usa;
+            un.Iraq = iraq;
             iraq.Send("草拟大坝！");
-            uSA.Send("牛！");
+            usa.Send("牛！");
             
         }
     }
@@ -29,6 +29,8 @@ namespace _21中介者模式
         public abstract void Declare(string content, Country source);
     }
 
+
+    //所有实体只与中介耦合
     abstract class Country
     {
         protected InternationalOrgnazition mediator;
@@ -70,6 +72,7 @@ namespace _21中介者模式
     }
 
     //ConcreateMediator类必须要知道以他为中介的所有对象
+    
     class UN : InternationalOrgnazition
     {
         
